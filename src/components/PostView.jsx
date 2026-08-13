@@ -12,6 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BsReplyFill } from "react-icons/bs";
 import { comment } from 'postcss';
+import { markEntryRead } from '../utils/readEntries';
 
 function PostView() {
     const [visited, setVisited] = useState();
@@ -59,6 +60,7 @@ function PostView() {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data.type);
+                    markEntryRead(data.type === "comment" ? data.story_id : data.id);
                     if (data.type === "comment") {
                         getThreadParent(data.story_id, data)
                     } else {
@@ -89,7 +91,6 @@ function PostView() {
     }
 
     if (post) {
-      window.scrollTo(0,0)
         return (
             <div className='postview md:w-2/3 md:m-auto overflow-x-hidden mt-10px -z-1' id="scrollbar1">
                 <div>
@@ -122,7 +123,7 @@ function PostView() {
                     {post.type === "comment" && <div className='text-blue-900 flex font-semibold text-sm items-center justify-center mb-2'><Link to={`/item/${post.story_id}`} className="flex items-center"><BsReplyFill className='inline mr-2' />In reply to
                         <span>
                             {inThread ? <><span className='ml-1 bg-blue-200 p-2 rounded-full mr-1'>{inThread.title}</span>by {inThread.author}</>
-                                : <>lotusreader.netlify.app/item/{post.story_id}</>}
+                                : <>item/{post.story_id}</>}
                         </span></Link></div>}
                     {parse(post.text)}
                 </div>}

@@ -1,19 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaArrowCircleUp, FaComments, FaRegClock } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { BsBoxArrowInUpRight } from 'react-icons/bs'
+import { isEntryRead } from '../utils/readEntries'
 function PostCard({ item }) {
+    const [read, setRead] = useState(() => isEntryRead(item.id));
+
+    useEffect(() => {
+        const refreshReadState = () => setRead(isEntryRead(item.id));
+        window.addEventListener('lotus-read-entry', refreshReadState);
+        window.addEventListener('storage', refreshReadState);
+        return () => {
+            window.removeEventListener('lotus-read-entry', refreshReadState);
+            window.removeEventListener('storage', refreshReadState);
+        };
+    }, [item.id]);
 
 
     return (
-        <Link to={`/item/${item.id}`}>
+        <Link to={`/item/${item.id}`} className={read ? 'read-entry' : undefined}>
             <div className='flex hover:cursor-pointer hover:bg-blue-50 border border-t-0 border-b-1 border-r-1 border-gray-700 px-3'>
                 <div key={item.id} className='w-full my-2 '>
                     <div className='post-info flex w-full items-center'>
                         <span className='md:text-sm text-base md:p-2 font-bold mr-4 flex-1 w-max'><span className='hover:underline'>{item.user}</span></span>
+                        {read && <span className='read-marker' aria-label='Read'>read</span>}
                         {(item.domain) && <div className='md:hover:underline text-white md:p-0 p-2 md:bg-inherit md:text-blue-900 bg-blue-900 font-semibold md:text-sm text-sm mb-2 w-fit rounded-lg' onClick={() => window.open(item.url)}>{item.domain} <BsBoxArrowInUpRight className='inline' /></div>}
                     </div>
-                    <div className='md:text-lg text-2xl md:font-normal font-bold mb-2'>{item.title}</div>
+                    <div className='post-title md:text-lg text-2xl md:font-normal font-bold mb-2'>{item.title}</div>
                     <div className='flex'>
                         <div className='flex items-center post-stat w-full '>
                             <span className='flex items-center text-base w-1/6'><FaArrowCircleUp className='mr-2 text-base' />{item.points ? item.points : '0'}</span>

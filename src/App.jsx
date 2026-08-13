@@ -8,13 +8,15 @@ import Ask from './pages/Ask';
 import Jobs from './pages/Jobs';
 import PostView from './components/PostView';
 import Show from './pages/Show';
+import ScrollRestoration from './components/ScrollRestoration';
 
 function App() {
 
  return (
-  <div className="App flex flex-col overflow-hidden">
-   <Header />
-   <div className='pt-14'>
+   <div className="App flex min-h-screen flex-col">
+    <ScrollRestoration />
+    <Header />
+   <div>
    <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/new" element={<New />} />

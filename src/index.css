@@ -8,6 +8,35 @@ html {
   overflow-x: hidden;
 }
 
+.nav-scroll {
+  scrollbar-width: none;
+}
+
+.nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.read-entry .post-title {
+  color: rgb(107, 114, 128);
+}
+
+.read-entry .post-info,
+.read-entry .post-stat {
+  color: rgb(107, 114, 128);
+}
+
+.read-marker {
+  flex-shrink: 0;
+  margin-right: 0.75rem;
+  border: 1px solid rgb(156, 163, 175);
+  border-radius: 9999px;
+  padding: 0.15rem 0.5rem;
+  color: rgb(107, 114, 128);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
 
 
 #scrollbar1::-webkit-scrollbar {
@@ -94,4 +123,3 @@ code {
   background-clip: content-box;
   background-color: rgb(52, 75, 136);
 }
-

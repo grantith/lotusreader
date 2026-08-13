@@ -1,35 +1,37 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { FaFeatherAlt } from 'react-icons/fa'
 function Header() {
     return (
-        <div className='bg-blue-900 py-2 text-white md:flex md:justify-between items-center w-screen z-10 px-3 fixed' >
-            <div className='flex mr-1 justify-center'>
-                <FaFeatherAlt className='inline text-2xl mr-1' /> Lotus Reader 
+        <div className='sticky top-0 z-10 flex w-full items-center gap-2 bg-blue-900 px-2 py-1.5 text-white md:justify-between md:px-3 md:py-2' >
+            <div className='flex shrink-0 items-center whitespace-nowrap md:mr-1'>
+                <FaFeatherAlt className='text-xl md:text-2xl' />
             </div>
-            <ul className='md:justify-between nav-elements items-center flex-wrap text-xs flex hover:[&>.]:cursor-pointer [&>.active]:underline md:mt-0 mt-5 justify-center'>
+            <nav className='nav-scroll min-w-0 flex-1 overflow-x-auto md:flex-none'>
+            <ul className='nav-elements flex w-max flex-nowrap items-center gap-1 text-xs hover:[&>.]:cursor-pointer [&>.active]:underline md:gap-2'>
                 <NavLink style={({ isActive }) =>
               isActive ? activeStyle : undefined
-            } className='border p-2 rounded-full m-1 md:mr-3' to="/">Home</NavLink >
+            } className='whitespace-nowrap rounded-full border px-2 py-1 md:p-2' to="/">Home</NavLink >
                 <NavLink style={({ isActive }) =>
               isActive ? activeStyle : undefined
-            } className='border p-2 rounded-full m-1 md:mr-3 new ' to="/new">New</NavLink >
+            } className='whitespace-nowrap rounded-full border px-2 py-1 md:p-2' to="/new">New</NavLink >
                 <NavLink style={({ isActive }) =>
               isActive ? activeStyle : undefined
-            } className='border p-2 rounded-full m-1 md:mr-3 best ' to="/best">Best</NavLink >
+            } className='whitespace-nowrap rounded-full border px-2 py-1 md:p-2' to="/best">Best</NavLink >
                 <NavLink style={({ isActive }) =>
               isActive ? activeStyle : undefined
-            } className='border p-2 rounded-full m-1 md:mr-3 trending ' to="/trending">Trending</NavLink >
+            } className='whitespace-nowrap rounded-full border px-2 py-1 md:p-2' to="/trending">Trending</NavLink >
                 <NavLink style={({ isActive }) =>
               isActive ? activeStyle : undefined
-            } className='border p-2 rounded-full m-1 md:mr-3 ask ' to="/ask">Ask</NavLink >
+            } className='whitespace-nowrap rounded-full border px-2 py-1 md:p-2' to="/ask">Ask</NavLink >
                 <NavLink style={({ isActive }) =>
               isActive ? activeStyle : undefined
-            } className='border p-2 rounded-full m-1 md:mr-3 show ' to="/show">Show</NavLink >
+            } className='whitespace-nowrap rounded-full border px-2 py-1 md:p-2' to="/show">Show</NavLink >
                 <NavLink style={({ isActive }) =>
               isActive ? activeStyle : undefined
-            } className='border p-2 rounded-full jobs md:mr-3 mr-3' to="/jobs">Jobs</NavLink >
+            } className='whitespace-nowrap rounded-full border px-2 py-1 md:p-2' to="/jobs">Jobs</NavLink >
             </ul>
+            </nav>
         </div>
     )
 }
