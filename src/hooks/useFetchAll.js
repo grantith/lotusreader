@@ -3,8 +3,8 @@ import { useState, useEffect, useRef } from 'react';
 const cache = {}; // This will persist across component mounts
 
 function useFetchAll(type, page = 1) {
-    const [news, setNews] = useState(cache[type] ? cache[type] : []); // Initialize with cache if available
-    const [loading, setLoading] = useState(true);
+    const [news, setNews] = useState(() => (cache[type] ? cache[type].flat() : [])); // Initialize with cache if available
+    const [loading, setLoading] = useState(() => !(cache[type] && cache[type][page]));
     const prevType = useRef(type); // To keep track of the previous type
 
     useEffect(() => {
