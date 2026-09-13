@@ -37,6 +37,10 @@ html {
   text-transform: uppercase;
 }
 
+.comment-swipe-surface {
+  touch-action: pan-y;
+}
+
 
 
 #scrollbar1::-webkit-scrollbar {
