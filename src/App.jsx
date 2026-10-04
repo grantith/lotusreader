@@ -13,7 +13,7 @@ import ScrollRestoration from './components/ScrollRestoration';
 function App() {
 
  return (
-   <div className="App flex min-h-screen flex-col">
+   <div className="App app-shell flex min-h-screen flex-col">
     <ScrollRestoration />
     <Header />
    <div>

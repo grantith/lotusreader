@@ -122,8 +122,8 @@ function TreeNode({ id, node, indent, isRoot, parentId, parentName, postAuthor }
 
     return (
         <div
-            className={(!isRoot) ? `comment-container comment-${id} inner-comment-shadow ml-3 border border-b-0 border-r-0 border-black hover:cursor-default ${collapsed ? 'bg-blue-200' : ''}`
-                : `comment-container root-shadow comment-${id} border border-black mt-3 hover:cursor-default rounded-md ${collapsed ? 'bg-blue-200' : ''}`}
+            className={(!isRoot) ? `app-comment comment-container comment-${id} inner-comment-shadow ml-3 border border-b-0 border-r-0 border-black hover:cursor-default ${collapsed ? 'is-collapsed bg-blue-200' : ''}`
+                : `app-comment comment-container root-shadow comment-${id} border border-black mt-3 hover:cursor-default rounded-md ${collapsed ? 'is-collapsed bg-blue-200' : ''}`}
                 id={`comment-${id}`}
             data-parent-id={`parent-${id}`}
             // ref={commentRef}
@@ -137,7 +137,7 @@ function TreeNode({ id, node, indent, isRoot, parentId, parentName, postAuthor }
                 onPointerMove={handlePointerMove}
                 onPointerUp={finishPointer}
                 onPointerCancel={handlePointerCancel}>
-                    <div className='headers text-blue-900 md:text-xs text-sm font-bold w-full px-3 flex items-center my-3'>
+                    <div className='app-accent headers text-blue-900 md:text-xs text-sm font-bold w-full px-3 flex items-center my-3'>
                         <div className='flex flex-1 items-center'>
                             {(node.author === postAuthor) ? <><HiUser className='mr-1' /> {node.author}</> : node.author}
                             {(parentName) && <>
@@ -154,7 +154,7 @@ function TreeNode({ id, node, indent, isRoot, parentId, parentName, postAuthor }
                                 <div className={`absolute right-0 md:text-sm text-gray-700 ${hovering ? "opacity-100" : "opacity-100 md:opacity-0"}`}>
                                     <button
                                         type='button'
-                                        className='flex font-normal hover:cursor-pointer items-center border border-gray-800 py-1 px-2 rounded-full'
+                                        className='app-comment-control flex font-normal hover:cursor-pointer items-center border border-gray-800 py-1 px-2 rounded-full'
                                         aria-expanded={!collapsed}
                                         aria-controls={`replies-${id}`}
                                         aria-label={collapsed ? `Expand replies (${visibleChildren.length})` : 'Collapse replies'}
@@ -187,7 +187,7 @@ function TreeNode({ id, node, indent, isRoot, parentId, parentName, postAuthor }
 
 function CommentText({ children }) {
     return (
-        <div data-comment-scroll className='content md:text-sm text-sm break-words overflow-auto w-full px-3 pb-3 [&>p>a]:underline [&>p>a]:text-blue-900 [&>pre]:pre-wrap)'
+        <div data-comment-scroll className='app-comment-text content md:text-sm text-sm break-words overflow-auto w-full px-3 pb-3 [&>p>a]:underline [&>p>a]:text-blue-900 [&>pre]:pre-wrap)'
         >{parse(children, {
             replace: domNode => {
                 if (domNode.attribs) {

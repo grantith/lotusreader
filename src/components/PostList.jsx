@@ -18,8 +18,8 @@ function PostList({ news, page, setPage, setClicked, type }) {
             <div className='postlist md:w-2/3 md:m-auto w-full pt-5 flex flex-col' id='scrollbar1'>
                 {news.map(item => <PostCard item={item} location={location} setClicked={setClicked} />)}
                 <div className='flex w-full gap-3 mb-3'>
-                    {(type !== "active") && <div onClick={() => handleClick()} className="w-5/6  hover:cursor-pointer py-4 mt-4 bg-blue-900 text-white text-center">{loadText}</div>}
-                    {(type !== "active") && <div onClick={() => window.scrollTo(0, 0)} className="w-1/3 hover:cursor-pointer py-4 mt-4 bg-blue-900 text-white text-center">Scroll to Top</div>}
+                    {(type !== "active") && <button type='button' onClick={handleClick} className="app-action w-5/6 hover:cursor-pointer py-4 mt-4 bg-blue-900 text-white text-center">{loadText}</button>}
+                    {(type !== "active") && <button type='button' onClick={() => window.scrollTo(0, 0)} className="app-action w-1/3 hover:cursor-pointer py-4 mt-4 bg-blue-900 text-white text-center">Scroll to Top</button>}
                 </div>
             </div>
         )

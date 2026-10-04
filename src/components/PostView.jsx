@@ -92,7 +92,7 @@ function PostView() {
 
     if (post) {
         return (
-            <div className='postview md:w-2/3 md:m-auto overflow-x-hidden mt-10px -z-1' id="scrollbar1">
+            <div className='postview app-post-view md:w-2/3 md:m-auto overflow-x-hidden mt-10px -z-1' id="scrollbar1">
                 <div>
                     <ToastContainer
                         position="top-right"
@@ -119,7 +119,7 @@ function PostView() {
                     <div className='font-bold mx-3 flex items-center w-fit text-blue-900'><FaComment className='inline mr-2' />{getCommentsCount(post)}</div>
                 </div>
 
-                {post.text && <div className={(post.type === "text" || "story") ? `mx-3 [&>p>a]:underline [&>p>a]:text-blue-800 bg-blue-50 py-5 px-3 rounded-lg` : undefined}>
+                {post.text && <div className={(post.type === "text" || "story") ? `app-post-text mx-3 [&>p>a]:underline [&>p>a]:text-blue-800 bg-blue-50 py-5 px-3 rounded-lg` : undefined}>
                     {post.type === "comment" && <div className='text-blue-900 flex font-semibold text-sm items-center justify-center mb-2'><Link to={`/item/${post.story_id}`} className="flex items-center"><BsReplyFill className='inline mr-2' />In reply to
                         <span>
                             {inThread ? <><span className='ml-1 bg-blue-200 p-2 rounded-full mr-1'>{inThread.title}</span>by {inThread.author}</>
@@ -128,7 +128,7 @@ function PostView() {
                     {parse(post.text)}
                 </div>}
                 {post.url &&
-                    <div className='w-full p-5 bg-blue-200 hover:bg-blue-50 hover:duration-300 hover:cursor-pointer duration-300 rounded-xl text-xl border text-center' onClick={() => window.open(post.url)}>{post.url}<BsBoxArrowInUpRight className='ml-3 inline' /></div>}
+                    <a className='app-external-link block w-full p-5 bg-blue-200 hover:bg-blue-50 hover:duration-300 duration-300 rounded-xl text-xl border text-center' href={post.url} target='_blank' rel='noopener noreferrer'>{post.url}<BsBoxArrowInUpRight className='ml-3 inline' /></a>}
                 <Comments comments={post.children} postAuthor={post.author} />
             </div>
         )
