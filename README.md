@@ -15,3 +15,9 @@ The project is not done. The code is not pretty, there is still a lot of cleanin
 - Clone the repo
 - Then run `npm i`
 - After installing the dependencies, run `npm run dev`
+
+## Read tracking
+Opening a story or its comments marks it as read in this browser. On a touch
+device, swipe a story card to the right to mark it as read without opening it.
+Vertical scrolling and taps still work normally. Read markers are stored locally
+in your browser and are not synced across devices.
