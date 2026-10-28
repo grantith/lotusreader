@@ -42,6 +42,11 @@ body {
   color: var(--app-text);
 }
 
+.loading-screen {
+  background: var(--app-surface);
+  color: var(--app-text);
+}
+
 .app-header {
   background: #1e3a8a;
 }

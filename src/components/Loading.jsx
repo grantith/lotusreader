@@ -2,9 +2,9 @@ import React from 'react'
 
 function Loading() {
     return (
-        <div className="app-shell h-screen text-xl">
-            <div className="flex  justify-center items-center h-full">
-            <span className="loader mr-3"></span>
+        <div className="loading-screen flex h-screen items-center justify-center text-xl" role="status" aria-live="polite">
+            <div className="flex items-center">
+            <span className="loader mr-3" aria-hidden="true"></span>
             Loading
             </div>
         </div>
